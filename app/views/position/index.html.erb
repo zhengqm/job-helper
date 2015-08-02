@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h1>所有职位 <small><%= "当前共有#{@positions.count}个职位"%></small></h1>
+</div>
+
+
+
+<% @phases.each do |phase|%>
+
+    <div class="phase_block">
+    <h3> <%= phase.description %> 
+    <small> <%= link_to raw("<span class='glyphicon glyphicon-plus'></span>"), {:action => 'new', :phase_id => phase.id} %></small>
+    </h3>
+
+
+    
+
+    <% if @positions.where(:phase_id => phase.id).count > 0 %>
+
+    <table class="table table-hover">
+        <tr>
+            <th class="col-md-3">职位</th>
+            <th class="col-md-3">公司</th>
+            <th class="col-md-2">截止日期</th>
+            <th class="col-md-2">操作</th>
+        </tr>
+
+        <% @positions.where(:phase_id => phase.id).each do |position| %>
+
+        <tr>
+            <td><%= position.name %></td>
+            <td><%= position.company %></td>
+            <td><%= position.deadline.strftime("%Y-%m-%d") if position.deadline %></td>
+            <td>
+                <%=link_to '详情', {:action => 'show', :id => position.id}%>
+                <%=link_to '编辑', {:action => 'edit', :id => position.id}%>
+                <%=link_to '删除',  {:action => 'delete', :id => position.id}%>
+            </td>
+        </tr>
+
+        <% end %>
+    </table>
+
+    <% else%>
+        <small>此分类下没有职位</small>
+    <% end %>
+
+    </div>
+
+<%end%>

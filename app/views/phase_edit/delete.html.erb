@@ -1,0 +1,11 @@
+
+
+确定删除这一阶段？
+
+<%= form_for(:phase, :url => {:action => 'destroy', :id => @phase.id}) do |f|%>
+
+    
+    <br><%= @phase.description %><br>
+
+    <%= submit_tag "删除" %>
+<% end %>

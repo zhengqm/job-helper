@@ -1,0 +1,23 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+body {
+    padding-top: 70px;
+}
+
+.sidebar-nav-fixed {
+     position:fixed;
+
+     width:20%;
+ }
+
+.date_select {
+    width: 160px;
+}
+
+.phase_block {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

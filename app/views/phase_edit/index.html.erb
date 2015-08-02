@@ -1,0 +1,25 @@
+
+
+<%= link_to "新建一个阶段", {:action => 'new'}%>
+
+
+<table class="table">
+    <tr>
+        <th>Phase Stage</th>
+        <th>Description</th>
+        <th>Operation</th>
+    </tr>
+    <%@phases.each do |phase|  %>
+
+    <tr>
+        <td><%= phase.stage %></td>
+        <td><%= phase.description %></td>
+        <td>
+            <%=link_to 'show', {:action => 'show', :id => phase.id}%>
+            <%=link_to 'edit', {:action => 'edit', :id => phase.id}%>
+            <%=link_to 'delete',  {:action => 'delete', :id => phase.id}%>
+        </td>
+    </tr>
+
+    <% end %>
+</table>

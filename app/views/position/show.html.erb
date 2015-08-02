@@ -1,0 +1,31 @@
+
+<%=  link_to '<< 所有职位' , {  :action => 'index'} %>
+
+<br><br>
+
+<table class="table table-bordered">
+    <tr>
+        <th>职位</th>
+        <td><%= @position.name %></th>
+    </tr>
+    <tr>
+        <th>公司</td>
+        <td><%= @position.company %></td>
+    </tr>
+    <tr>
+        <th>描述</td>
+        <td><%= @position.description %></td>
+    </tr>
+    <tr>
+        <th>状态</td>
+        <td><%= @position.phase.description if @position.phase%></td>
+    </tr>
+    <tr>
+        <th>备注</td>
+        <td><%= @position.note %></td>
+    </tr>
+    <tr>
+        <th>截止日期</td>
+        <td><%= @position.deadline.strftime("%Y-%m-%d") if @position.deadline%></td>
+    </tr>
+</table>

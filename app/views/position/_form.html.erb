@@ -1,0 +1,31 @@
+
+    <div class="form-group">
+        <%=f.label :name, "职位"%> 
+        <%= f.text_field :name, :size => 50, :class => 'form-control' %> 
+    </div>
+
+    <div class="form-group">
+        <%=f.label :company, "公司" %> 
+        <%= f.text_field :company, :size => 50, :class => 'form-control' %> 
+    </div>
+
+    <div class="form-group">
+        <%=f.label :description, "描述" %> 
+        <%= f.text_area :description, :size => '100x5', :class => 'form-control' %> 
+    </div>  
+
+    <div class="form-group">
+        <%=f.label :phase_id, "状态" %> 
+        <%= f.select(:phase_id, @phases.map { |phase| [phase.description, phase.id]}, :class => "form-control") %> 
+    </div>  
+
+    <div class="form-group">
+        <%=f.label :note, "备注" %> 
+        <%= f.text_area :note, :size => '100x5', :class => 'form-control'%> 
+    </div>
+
+
+    <div class="form-group">
+        <%=f.label :deadline, "截止日期" %> 
+        <%= f.date_field :deadline, :class => 'form-control date_select' %> 
+    </div>

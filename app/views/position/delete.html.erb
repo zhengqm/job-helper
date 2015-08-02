@@ -1,0 +1,11 @@
+
+
+确定删除这一职位？
+
+<%= form_for(:position, :url => {:action => 'destroy', :id => @position.id}) do |f|%>
+
+    
+    <br><%= "#{@position.company} - #{@position.name}" %><br>
+
+    <%= submit_tag "删除" %>
+<% end %>

@@ -1,0 +1,12 @@
+
+<%=  link_to " << back to index" , {  :action => 'index'} %>
+<table class="table">
+    <tr>
+        <th>Phase Stage</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><%= @phase.stage %></td>
+        <td><%= @phase.description %></td>
+    </tr>
+</table>

@@ -1,0 +1,15 @@
+
+<%= form_for(:phase, :url => {:action => 'update', :id => @phase.id}) do |f|%>
+
+    <div class="form-group">
+        <%=f.label :stage%> 
+        <%= f.text_field :stage, :class => 'form-control' %> 
+    </div>
+    
+    <div class="form-group">
+        <%=f.label :description%> <br>
+        <%= f.text_field :description, :class => 'form-control' %> <br>
+    </div>
+
+    <%= submit_tag "更新", :class => 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,12 @@
+
+
+<h1>创建新职位</h1>
+<hr></hr>
+
+<%= form_for(:position, :url => {:action => 'create'}) do |f|%>
+    
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <br>
+    <%= submit_tag "新建", class:"btn btn-primary" %>
+<% end %>
