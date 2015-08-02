@@ -16,7 +16,7 @@
 
     <div class="form-group">
         <%=f.label :phase_id, "状态" %> 
-        <%= f.select(:phase_id, @phases.map { |phase| [phase.description, phase.id]}, :class => "form-control") %> 
+        <%= f.select(:phase_id, @phases.map { |phase| [phase.description, phase.id]}, {},{ :class => "form-control"}) %> 
     </div>  
 
     <div class="form-group">
