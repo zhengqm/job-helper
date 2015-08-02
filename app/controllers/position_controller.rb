@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class PositionController < ApplicationController
   def new
     @position = Position.new
@@ -11,6 +13,7 @@ class PositionController < ApplicationController
     @position.phase_id = Phase.find_by_stage(99).id if not @position.phase_id
     if @position.save
       user.positions << @position
+      flash[:notice] = "职位创建成功"
       redirect_to(:action => 'index')
     else
         render 'new'
@@ -35,6 +38,7 @@ class PositionController < ApplicationController
   def update
     @position = Position.find(params[:id])
     if @position.update_attributes(allowed_params)
+        flash[:notice] = "职位更新成功"
         redirect_to(:action => 'show', :id => params[:id])
     else
         render(:action => 'edit')
@@ -48,6 +52,7 @@ class PositionController < ApplicationController
   def destroy
     position = Position.find(params[:id])
     position.destroy
+    flash[:notice] = "职位删除成功"
     redirect_to(:action => 'index')
   end
 
