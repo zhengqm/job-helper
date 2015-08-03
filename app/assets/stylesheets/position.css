@@ -7,6 +7,10 @@ body {
     padding-top: 70px;
 }
 
+.page-header {
+    margin-top: 10px;
+}
+
 .sidebar-nav-fixed {
      position:fixed;
 
@@ -21,3 +25,5 @@ body {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+.fc-content  { cursor: pointer; cursor: hand; }

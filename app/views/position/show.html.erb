@@ -1,8 +1,8 @@
 
-<%=  link_to '<< 所有职位' , {  :action => 'index'} %>
 
-<br>
-<br>
+<div class="page-header">
+  <h1>职位详情</h1>
+</div>
 
 <table class="table table-bordered">
     <tr>
@@ -32,3 +32,4 @@
 </table>
 
 <%= link_to raw('<button class="btn btn-primary"> 编辑 </button>'), {:action => 'edit', :id => @position.id}%>
+<%= link_to raw('<button class="btn btn-danger"> 删除 </button>'), {:action => 'delete', :id => @position.id}%>

@@ -48,8 +48,8 @@
         <%= link_to "求职状态机", {:controller => 'position', :action => 'index'}, :class => "navbar-brand"%>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><% link_to "Link1", "/path1"  %></li>
-            <li><% link_to "Link2", "/path2"  %></li>
+            <li><%= link_to "所有职位", {:controller => 'position', :action => 'index'}  %></li>
+            <li><%= link_to "日历视图", {:controller => 'position', :action => 'calendar_view'} %></li>
             <li><% link_to "Link3", "/path3"  %></li>
           </ul>
         </div>

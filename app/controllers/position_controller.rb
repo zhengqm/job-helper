@@ -1,6 +1,23 @@
 # encoding: utf-8
 
 class PositionController < ApplicationController
+
+  def calendar_view
+  end
+
+  def feeds
+    start_date = Date.parse(params[:start])
+    end_date = Date.parse(params[:end])
+    user = User.first
+    selected_positions = user.positions.where(:deadline => start_date..end_date)
+    events = selected_positions.map { |position| {'id' => position.id, 
+                                                  'title' => position.name + '-' + position.phase.description,
+                                                  'allDay' => true,
+                                                  'start' => position.deadline,
+                                                  }  }
+    render :json => events
+  end
+
   def new
     @position = Position.new
     @position.phase_id = params[:phase_id]
