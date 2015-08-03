@@ -31,5 +31,6 @@
     </tr>
 </table>
 
+<%= link_to raw('<button class="btn btn-primary"> 确定 </button>'), {:action => 'index'}%>
 <%= link_to raw('<button class="btn btn-primary"> 编辑 </button>'), {:action => 'edit', :id => @position.id}%>
 <%= link_to raw('<button class="btn btn-danger"> 删除 </button>'), {:action => 'delete', :id => @position.id}%>
