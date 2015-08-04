@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804085650) do
+ActiveRecord::Schema.define(version: 20150804142554) do
 
   create_table "phases", force: :cascade do |t|
     t.string   "description", limit: 255, null: false
@@ -28,13 +28,14 @@ ActiveRecord::Schema.define(version: 20150804085650) do
     t.text     "description",      limit: 16777215
     t.integer  "user_id",          limit: 4
     t.text     "note",             limit: 16777215
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.integer  "phase_id",         limit: 4
     t.datetime "deadline"
     t.integer  "current_step",     limit: 4
     t.string   "step_description", limit: 255
     t.float    "progress",         limit: 24
+    t.boolean  "waiting",          limit: 1,        default: false
   end
 
   add_index "positions", ["user_id"], name: "index_positions_on_user_id", using: :btree

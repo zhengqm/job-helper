@@ -37,6 +37,11 @@
             <%=f.label :current_step, "轮" %> 
         </div>
 
+        <div class="form-group inline-select">
+            <%=f.check_box :waiting %> 
+            <%=f.label :waiting, "等待结果中" %> 
+        </div>
+
         
     </div>
 
@@ -47,6 +52,6 @@
 
 
     <div class="form-group">
-        <%=f.label :deadline, "截止日期" %> 
+        <%=f.label :deadline, "截止/完成日期" %> 
         <%= f.date_field :deadline, :class => 'form-control short_input' %> 
     </div>

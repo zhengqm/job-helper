@@ -113,6 +113,6 @@ class PositionController < ApplicationController
   private
 
     def allowed_params
-      params.require(:position).permit([:name, :company, :description, :phase_id, :note, :deadline, :current_step, :step_description])
+      params.require(:position).permit([:name, :company, :description, :phase_id, :note, :deadline, :current_step, :step_description, :waiting])
     end
 end

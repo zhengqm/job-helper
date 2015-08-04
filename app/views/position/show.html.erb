@@ -30,14 +30,17 @@
     </tr>
     <tr>
         <th>状态</td>
-        <td><%= @position.phase.description if @position.phase%> <%= "第#{@position.current_step}轮" if @position.current_step %></td>
+        <td><%= @position.phase.description if @position.phase%> 
+            <%= "第#{@position.current_step}轮" if @position.current_step %>
+            <%= @position.waiting ? "等待结果中" : "" %>
+        </td>
     </tr>
     <tr>
         <th>备注</td>
         <td><%= @position.note %></td>
     </tr>
     <tr>
-        <th>截止日期</td>
+        <th><%=@position.waiting ? "完成日期" : "截止日期" %></td>
         <td><%= @position.deadline.strftime("%Y-%m-%d") if @position.deadline%></td>
     </tr>
 </table>
