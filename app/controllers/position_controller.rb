@@ -27,8 +27,27 @@ class PositionController < ApplicationController
   def create
     user = User.first
     @position = Position.new(allowed_params)
-    @position.phase_id = Phase.find_by_stage(99).id if not @position.phase_id
+
+    
     if @position.save
+      
+      Phase.all.each do |phase|
+        step = @position.steps.find_by_phase_id(phase.id) || Step.new
+        step.steps = params["phase-#{phase.id}"].to_i
+        step.phase_id = phase.id
+        step.position_id = @position.id
+        step.save
+      end
+      
+      max_step = params["phase-#{params[:position][:phase_id]}"].to_i
+
+      if @position.current_step > max_step
+        @position.current_step = max_step 
+        @position.save
+      end
+
+      @position.calculate_progress
+
       user.positions << @position
       flash[:notice] = "职位创建成功"
       redirect_to(:action => 'index')
@@ -54,7 +73,25 @@ class PositionController < ApplicationController
 
   def update
     @position = Position.find(params[:id])
+
+    
     if @position.update_attributes(allowed_params)
+        Phase.all.each do |phase|
+          step = @position.steps.find_by_phase_id(phase.id) || Step.new
+          step.steps = params["phase-#{phase.id}"].to_i
+          step.phase_id = phase.id
+          step.position_id = @position.id
+          step.save
+        end
+
+        max_step = params["phase-#{params[:position][:phase_id]}"].to_i
+        if @position.current_step > max_step
+          @position.current_step = max_step 
+          @position.save
+        end
+
+        @position.calculate_progress
+
         flash[:notice] = "职位更新成功"
         redirect_to(:action => 'show', :id => params[:id])
     else
@@ -76,6 +113,6 @@ class PositionController < ApplicationController
   private
 
     def allowed_params
-      params.require(:position).permit([:name, :company, :description, :phase_id, :note, :deadline])
+      params.require(:position).permit([:name, :company, :description, :phase_id, :note, :deadline, :current_step, :step_description])
     end
 end

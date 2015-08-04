@@ -6,8 +6,8 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>职位</th>
-        <td><%= @position.name %></th>
+        <th class="col-md-6">职位</th>
+        <td class="col-md-6"><%= @position.name %></th>
     </tr>
     <tr>
         <th>公司</td>
@@ -18,8 +18,19 @@
         <td><%= @position.description %></td>
     </tr>
     <tr>
+        <th>流程</td>
+        <td>
+            <dl class="dl-horizontal" id="stages">
+            <% @position.steps.each do |step|%>
+                <dt style="text-align:left;"><%= step.phase.description %></dt> 
+                <dd><%= step.steps %>轮</dd>
+            <% end %>
+            </dl>
+        </td>
+    </tr>
+    <tr>
         <th>状态</td>
-        <td><%= @position.phase.description if @position.phase%></td>
+        <td><%= @position.phase.description if @position.phase%> <%= "第#{@position.current_step}轮" if @position.current_step %></td>
     </tr>
     <tr>
         <th>备注</td>

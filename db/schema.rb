@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801143211) do
+ActiveRecord::Schema.define(version: 20150804085650) do
 
   create_table "phases", force: :cascade do |t|
     t.string   "description", limit: 255, null: false
@@ -23,19 +23,29 @@ ActiveRecord::Schema.define(version: 20150801143211) do
   add_index "phases", ["stage"], name: "index_phases_on_stage", using: :btree
 
   create_table "positions", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "company",     limit: 255
-    t.text     "description", limit: 16777215
-    t.integer  "user_id",     limit: 4
-    t.integer  "phase_id",    limit: 4
-    t.text     "note",        limit: 16777215
+    t.string   "name",             limit: 255
+    t.string   "company",          limit: 255
+    t.text     "description",      limit: 16777215
+    t.integer  "user_id",          limit: 4
+    t.text     "note",             limit: 16777215
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "phase_id",         limit: 4
     t.datetime "deadline"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "current_step",     limit: 4
+    t.string   "step_description", limit: 255
+    t.float    "progress",         limit: 24
   end
 
-  add_index "positions", ["phase_id"], name: "index_positions_on_phase_id", using: :btree
   add_index "positions", ["user_id"], name: "index_positions_on_user_id", using: :btree
+
+  create_table "steps", force: :cascade do |t|
+    t.integer  "position_id", limit: 4
+    t.integer  "phase_id",    limit: 4
+    t.integer  "steps",       limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           limit: 255, null: false

@@ -7,6 +7,11 @@ body {
     padding-top: 70px;
 }
 
+#stages {
+  margin-bottom:0px;
+}
+
+
 .page-header {
     margin-top: 10px;
 }
@@ -17,13 +22,25 @@ body {
      width:20%;
  }
 
-.date_select {
+.short_input {
     width: 160px;
 }
 
 .phase_block {
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.inline-select {
+    width: 23%;
+}
+
+.inline-wide-select {
+    width: 45%;
+}
+
+.round-select-form {
+  margin-bottom: 15px;
 }
 
 .fc-content  { cursor: pointer; cursor: hand; }

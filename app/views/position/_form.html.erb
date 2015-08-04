@@ -14,10 +14,31 @@
         <%= f.text_area :description, :size => '100x5', :class => 'form-control' %> 
     </div>  
 
-    <div class="form-group">
-        <%=f.label :phase_id, "状态" %> 
-        <%= f.select(:phase_id, @phases.map { |phase| [phase.description, phase.id]}, {},{ :class => "form-control"}) %> 
+    <div class="form-inline round-select-form">
+        <% @phases.each do |phase|%>
+            <div class="form-group inline-select">
+                <%=label_tag "phase-#{phase.id}", "#{phase.description}" %> 
+                <%= select_tag("phase-#{phase.id}",  options_for_select((1..8), find_default(position, phase.id)), { :class => "form-control"}) %> 
+                <%=label_tag "phase-#{phase.id}", "轮" %> 
+            </div>
+        <% end %>
     </div>  
+
+    <div class="form-inline round-select-form">
+        <div class="form-group inline-select">
+            <%=f.label :phase_id, "当前状态" %> 
+            
+        </div>
+
+        <div class="form-group inline-select">
+            <%= f.select(:phase_id, @phases.map { |phase| [phase.description, phase.id]}, {},{ :class => "form-control"}) %> 
+            <%=f.label :current_step, "第" %> 
+            <%= f.select(:current_step, 1..8, {},{ :class => "form-control"}) %> 
+            <%=f.label :current_step, "轮" %> 
+        </div>
+
+        
+    </div>
 
     <div class="form-group">
         <%=f.label :note, "备注" %> 
@@ -27,5 +48,5 @@
 
     <div class="form-group">
         <%=f.label :deadline, "截止日期" %> 
-        <%= f.date_field :deadline, :class => 'form-control date_select' %> 
+        <%= f.date_field :deadline, :class => 'form-control short_input' %> 
     </div>
